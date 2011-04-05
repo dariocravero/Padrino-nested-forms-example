@@ -12,11 +12,13 @@
         %tr
           %th.first=mat(:person, :id)
           %th=mat(:person, :name)
+          %th Addresses
           %th.last="&nbsp;"
         -@people.each do |person|
           %tr
             %td.first=person.id
             %td=person.name
+            %td=person.addresses.to_json #unless person.addresses.nil?
             %td.last
               =button_to pat(:edit), url(:people, :edit, :id => person.id), :method => :get, :class => :button_to
               ="|"
