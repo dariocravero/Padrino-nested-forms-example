@@ -11,4 +11,7 @@ I've sorted that out by attaching a new Address instance before both, new and ed
     render 'people/new'
   end
 
+The problem then is, what do you do with the blank record that's created? ActiveRecord's :reject_if => :all_blank should work (as stated here http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html) but either I'm not using it properly or it just doesn't work here.
+
+Now, the approach I've taken to achieve that isn't the best and I know that. I'm sure there's a best way to do it and I'd love to see this example improved. :)
 Hope this is useful! :)
