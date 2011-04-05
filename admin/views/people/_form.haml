@@ -1,0 +1,26 @@
+.group
+  =f.label :name
+  =f.error_message_on :name
+  =f.text_field :name, :class => :text_field
+  %span.description Ex: a simple text
+  - f.fields_for :addresses do |address_form|
+    .group
+      %h3 Address:
+    .group
+      =address_form.label :street
+      =address_form.error_message_on :street
+      =address_form.text_field :street, :class => :text_field
+      %span.description Ex: a simple text   
+    .group
+      =address_form.label :city
+      =address_form.error_message_on :city
+      =address_form.text_field :city, :class => :text_field
+      %span.description Ex: a simple text   
+    .group
+      - unless address_form.object.new_record? 
+        = address_form.check_box '_destroy' 
+        = address_form.label '_destroy', :caption => 'Remove'
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:people, :index)}';return false", :class => :button

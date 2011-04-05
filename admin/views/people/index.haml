@@ -1,0 +1,27 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:people, :index)
+      %li=link_to pat(:new), url(:people, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:people)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:person, :id)
+          %th=mat(:person, :name)
+          %th.last="&nbsp;"
+        -@people.each do |person|
+          %tr
+            %td.first=person.id
+            %td=person.name
+            %td.last
+              =button_to pat(:edit), url(:people, :edit, :id => person.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:people, :destroy, :id => person.id), :method => :delete, :class => :button_to
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")
